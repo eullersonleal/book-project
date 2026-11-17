@@ -25,10 +25,8 @@ final class AutorController extends AbstractController
     }
 
     #[Route('/autores/novo', name: 'autores_novo', methods: ['GET', 'POST'])]
-    public function novo(
-        Request $request,
-        AutorRepository $autorRepository,
-    ): Response {
+    public function novo(Request $request, AutorRepository $autorRepository,): Response 
+    {
         $autor = new Autor();
 
         $form = $this->createForm(AutorType::class, $autor);
@@ -47,6 +45,31 @@ final class AutorController extends AbstractController
         }
 
         return $this->render('autores/novo.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/autores/{id}/editar', name: 'autores_editar', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function editar(Request $request, AutorRepository $autorRepository, int $id): Response
+    {
+        $autor = $autorRepository->find($id);
+
+        if (!$autor) {
+            throw $this->createNotFoundException('Autor não encontrado.');
+        }
+
+        $form = $this->createForm(AutorType::class, $autor);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $autorRepository->save($autor, true);
+
+            $this->addFlash('sucess', 'Autor atualizado com sucesso!');
+
+            return $this->redirectToRoute('autores_index');
+        }
+
+        return $this->render('autores/editar.html.twig', [
             'form' => $form,
         ]);
     }
