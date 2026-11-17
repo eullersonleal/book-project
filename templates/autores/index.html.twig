@@ -13,6 +13,10 @@
         <p role="status">{{ message }}</p>
     {% endfor %}
 
+    {% for message in app.flashes('error') %}
+        <p role="alert">{{ message }}</p>
+    {% endfor %}
+
     <table>
         <thead>
             <tr>
@@ -31,6 +35,19 @@
                         <a href="{{ path('autores_editar', {id: autor.id}) }}">
                             Editar
                         </a>
+
+                        <form
+                            method="post"
+                            action="{{ path('autores_excluir', {id: autor.id}) }}"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="{{ csrf_token('excluir_autor_' ~ autor.id) }}"
+                            >
+
+                            <button type="submit">Excluir</button>
+                        </form>
                     </td>
                 </tr>
             {% else %}
