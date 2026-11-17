@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\AutorRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AutorRepository::class)]
@@ -17,7 +18,14 @@ class Autor {
     private ?int $id = null;
 
     #[ORM\Column(name: 'Nome', type: 'string', length: 40)]
-    private string $nome;
+    #[Assert\NotBlank(
+        message: 'Informe o nome do autor.',
+    )]
+    #[Assert\Length(
+        max: 40,
+        maxMessage: 'O nome deve ter no máximo {{ limit }} caracteres.',
+    )]
+    private string $nome = "";
 
     public function getId(): ?int
     {
