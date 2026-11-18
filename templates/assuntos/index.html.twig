@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Assuntos{% endblock %}
+
+{% block body %}
+    <h1>Assuntos</h1>
+    
+    <p>
+        <a href="{{ path('assuntos_novo') }}">Novo assunto</a>
+    </p>
+
+    {% for message in app.flashes('success') %}
+        <p role="status">{{ message }}</p>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+        <p role="alert">{{ message }}</p>
+    {% endfor %}
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for assunto in assuntos %}
+                <tr>
+                    <td>{{ assunto.id }}</td>
+                    <td>{{ assunto.descricao }}</td>
+                    <td>
+                        <a href="{{ path('assuntos_editar', {id: assunto.id}) }}">
+                            Editar
+                        </a>
+
+                        <form
+                            method="post"
+                            action="{{ path('assuntos_excluir', {id: assunto.id}) }}"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="{{ csrf_token('excluir_assunto_' ~ assunto.id) }}"
+                            >
+
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Nenhum assunto cadastrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

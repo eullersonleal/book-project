@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novo assunto{% endblock %}
+
+{% block body %}
+    <h1>Novo assunto</h1>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.descricao) }}
+
+        <button type="submit">Salvar</button>
+    {{ form_end(form) }}
+
+    <p>
+        <a href="{{ path('assuntos_index') }}">Voltar para assuntos</a>
+    </p>
+{% endblock %}
