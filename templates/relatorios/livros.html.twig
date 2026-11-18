@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Livros por autor</title>
+    <style>
+        @page { margin: 36pt; }
+        body {
+            font-family: "DejaVu Sans", sans-serif;
+            font-size: 10pt;
+            color: #222;
+        }
+        h1 { font-size: 18pt; }
+        h2 {
+            margin-top: 24px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #aaa;
+            font-size: 13pt;
+            page-break-after: avoid;
+        }
+        h3 {
+            margin-bottom: 6px;
+            font-size: 11pt;
+            page-break-after: avoid;
+        }
+        p { line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <h1>Livros por autor</h1>
+
+    {% for grupo in grupos %}
+        <h2>
+            {% if grupo.id is not null %}
+                Autor {{ grupo.id }} -
+            {% endif %}
+            {{ grupo.nome }}
+        </h2>
+
+        {% for livroId, livro in grupo.livros %}
+            <h3>{{ livro.titulo }}</h3>
+
+            <p>
+                <strong>Código</strong> {{ livroId }}<br>
+                <strong>Editora</strong> {{ livro.editora }}<br>
+                <strong>Edição</strong> {{ livro.edicao }}<br>
+                <strong>Ano de publicação</strong> {{ livro.ano_publicacao }}<br>
+                <strong>Valor</strong>
+                R$ {{ livro.valor|number_format(2, ',', '.') }}
+            </p>
+
+            <p>
+                <strong>Assuntos</strong>
+                {{ livro.assuntos|join(', ')|default('Sem assunto cadastrado') }}
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>Nenhum livro cadastrado.</p>
+    {% endfor %}
+</body>
+</html>
