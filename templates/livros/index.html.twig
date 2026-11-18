@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livros{% endblock %}
+
+{% block body %}
+    <h1>Livros</h1>
+    
+    <p>
+        <a href="{{ path('livros_novo') }}">Novo livro</a>
+    </p>
+
+    {% for message in app.flashes('success') %}
+        <p role="status">{{ message }}</p>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+        <p role="alert">{{ message }}</p>
+    {% endfor %}
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for livro in livros %}
+                <tr>
+                    <td>{{ livro.id }}</td>
+                    <td>{{ livro.titulo }}</td>
+                    <td>
+                        <a href="{{ path('livros_editar', {id: livro.id}) }}">
+                            Editar
+                        </a>
+
+                        <form
+                            method="post"
+                            action="{{ path('livros_excluir', {id: livro.id}) }}"
+                        >
+                            <input
+                                type="hidden"
+                                name="_token"
+                                value="{{ csrf_token('excluir_livro_' ~ livro.id) }}"
+                            >
+
+                            <button type="submit">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Nenhum livro cadastrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

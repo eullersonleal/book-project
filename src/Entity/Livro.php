@@ -7,8 +7,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\LivroRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: LivroRepository::class)]
 #[ORM\Table(name: 'Livro')]
 class Livro
 {
@@ -18,18 +20,43 @@ class Livro
     private ?int $id = null;
 
     #[ORM\Column(name: 'Titulo', type: 'string', length: 40)]
-    private string $titulo = "";
+    #[Assert\NotBlank(message: 'Informe o título do livro.')]
+    #[Assert\Length(
+        max: 40,
+        maxMessage: 'O título deve ter no máximo {{ limit }} caracteres.',
+    )]
+    private string $titulo = '';
 
     #[ORM\Column(name: 'Editora', type: 'string', length: 40)]
+    #[Assert\NotBlank(message: 'Informe a editora.')]
+    #[Assert\Length(
+        max: 40,
+        maxMessage: 'A editora deve ter no máximo {{ limit }} caracteres.',
+    )]
     private string $editora = "";
 
     #[ORM\Column(name: 'Edicao', type: 'integer')]
+    #[Assert\Positive(message: 'A edição deve ser maior que zero.')]
+    #[Assert\LessThanOrEqual(
+        value: 2147483647,
+        message: 'A edição excede o limite permitido.',
+    )]
     private int $edicao = 1;
 
+    #[Assert\NotBlank(message: 'Informe o ano de publicação.')]
+    #[Assert\Regex(
+        pattern: '/\A[0-9]{4}\z/',
+        message: 'Informe o ano de publicação com quatro dígitos.',
+    )]
     #[ORM\Column(name: 'AnoPublicacao', type: 'string', length: 4)]
     private string $anoPublicacao = "";
 
     #[ORM\Column(name: 'Valor', type: 'decimal', precision: 10, scale: 2)]
+    #[Assert\NotBlank(message: 'Informe o valor.')]
+    #[Assert\Regex(
+        pattern: '/\A[0-9]{1,8}(?:\.[0-9]{1,2})?\z/',
+        message: 'Informe um valor de zero a 99.999.999,99, com até duas casas decimais.',
+    )]
     private string $valor = "0.00";
 
 
@@ -128,9 +155,9 @@ class Livro
         return $this->valor;
     }
 
-    public function setValor(string $valor): self
+    public function setValor(?string $valor): self
     {
-        $this->valor = $valor;
+        $this->valor = $valor ?? '';
 
         return $this;
     }
