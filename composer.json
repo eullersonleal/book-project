@@ -1,4 +1,6 @@
 {
+    "name": "eullersonleal/book-project",
+    "description": "Aplicacao Symfony para cadastro de livros, autores e assuntos e geracao de relatorios PDF.",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
