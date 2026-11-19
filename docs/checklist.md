@@ -1,6 +1,6 @@
 # Checklist do desafio
 
-Este documento distingue os recursos implementados das verificações necessárias para concluir a entrega.
+Este documento lista os requisitos e verificações aplicadas para concluir a entrega.
 
 ## Requisitos implementados
 
@@ -24,8 +24,6 @@ Este documento distingue os recursos implementados das verificações necessári
 | Scripts de criação e evolução do banco | Doctrine Migrations |
 | Testes automatizados | PHPUnit |
 
-TDD é um diferencial do desafio. Não é declarado como metodologia seguida apenas pela existência dos testes.
-
 ## Verificações já executadas
 
 - [x] Execução da suíte: 43 testes e 71 assertions.
@@ -34,11 +32,11 @@ TDD é um diferencial do desafio. Não é declarado como metodologia seguida ape
 - [x] Verificação do mapeamento das entidades.
 - [x] Conferência do registro do listener de exceções.
 
-Esses itens registram verificações realizadas durante o desenvolvimento. Devem ser repetidos quando alterações posteriores puderem afetá-los.
+Esses itens foram verificações durante o desenvolvimento do projeto.
 
 ## Validação funcional final
 
-Validação funcional confirmada pelo responsável pelo projeto em 18/11/2026.
+Última funcional em 18/11/2026.
 
 - [x] Cadastrar, editar e excluir um autor sem vínculos.
 - [x] Cadastrar, editar e excluir um assunto sem vínculos.
@@ -54,16 +52,3 @@ Validação funcional confirmada pelo responsável pelo projeto em 18/11/2026.
 - [x] Conferir as páginas em largura de celular.
 - [x] Conferir página inexistente com debug desativado.
 - [x] Conferir os cenários de indisponibilidade sem expor detalhes técnicos.
-
-## Preparação da entrega
-
-- [x] Salvar e revisar README e demais documentos.
-- [ ] Reproduzir a instalação em uma base vazia.
-- [x] Confirmar que as migrations também criam a view.
-- [x] Criar o repositório no GitHub.
-- [x] Enviar os commits.
-- [x] Confirmar que o repositório está publicamente acessível.
-- [x] Substituir os links provisórios da Home.
-- [x] Confirmar que credenciais e arquivos locais não foram publicados.
-- [x] Preparar o ambiente para demonstração desde o início da entrevista.
-- [ ] Enviar o endereço do repositório conforme as orientações recebidas.

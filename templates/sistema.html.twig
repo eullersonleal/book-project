@@ -1,0 +1,36 @@
+{% extends 'layouts/portal.html.twig' %}
+
+{% block title %}Sistema | Book Project{% endblock %}
+{% block titulo_pagina %}Recursos do sistema{% endblock %}
+
+{% block conteudo_portal %}
+    {% set atalhos = [
+        {
+            titulo: 'Livros',
+            rota: 'livros_index'
+        },
+        {
+            titulo: 'Autores',
+            rota: 'autores_index'
+        },
+        {
+            titulo: 'Assuntos',
+            rota: 'assuntos_index'
+        },
+        {
+            titulo: 'Relatório por autor',
+            rota: 'relatorios_livros'
+        }
+    ] %}
+
+    <div class="row g-3">
+        {% for atalho in atalhos %}
+            <div class="col-12 col-md-6 d-flex">
+                {% include 'components/card_acesso.html.twig' with {
+                    titulo: atalho.titulo,
+                    url: path(atalho.rota)
+                } only %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

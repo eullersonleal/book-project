@@ -1,0 +1,33 @@
+{% extends 'layouts/portal.html.twig' %}
+
+{% block title %}Documentações | Book Project{% endblock %}
+{% block titulo_pagina %}Documentações{% endblock %}
+
+{% block conteudo_portal %}
+    {% set repositorio = 'https://github.com/eullersonleal/book-project' %}
+
+    {% set acessos = [
+        {
+            titulo: 'Checklist do projeto',
+            url: repositorio ~ '/blob/main/docs/checklist.md'
+        },
+        {
+            titulo: 'Documentação técnica do projeto',
+            url: repositorio ~ '/blob/main/docs/documentacao_tecnica.md'
+        },
+        {
+            titulo: 'Repositório no GitHub',
+            url: repositorio
+        },
+        {
+            titulo: 'Manual do usuário',
+            url: repositorio ~ '/blob/main/docs/manual-do-usuario.md'
+        }
+    ] %}
+
+    {% include 'components/tabela.html.twig' with {
+        tituloHeader1: 'Documentos',
+        tituloHeader2: 'Links',
+        tabela: acessos
+    } only %}
+{% endblock %}

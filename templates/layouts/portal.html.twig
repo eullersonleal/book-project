@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container min-vh-100 d-flex flex-column
+                 justify-content-center align-items-center
+                 text-center gap-3 py-5">
+
+        <a href="{{ path('home') }}" aria-label="Voltar à página inicial">
+            <img
+                src="{{ asset('images/logo.png') }}"
+                alt="Book Project"
+                width="160"
+                class="img-fluid"
+            >
+        </a>
+
+        <h1 class="mb-0">
+            {% block titulo_pagina %}Book Project{% endblock %}
+        </h1>
+
+        {% block introducao %}{% endblock %}
+
+        <div class="col-12 col-md-10 col-lg-8 mt-4">
+            {% block conteudo_portal %}{% endblock %}
+        </div>
+    </main>
+{% endblock %}

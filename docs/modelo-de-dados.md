@@ -2,8 +2,6 @@
 
 O banco utiliza MySQL e possui três tabelas principais e duas tabelas associativas.
 
-Os nomes e tamanhos foram preservados conforme o modelo do desafio. O campo Valor foi acrescentado em Livro para atender à solicitação adicional.
-
 ## Livro
 
 | Coluna | Tipo | Característica |
@@ -93,7 +91,7 @@ São utilizados LEFT JOINs para manter livros mesmo quando não possuem autores 
 
 Uma linha representa uma combinação de livro, autor e assunto. O serviço do relatório organiza essas linhas para apresentar cada livro uma vez por autor e cada assunto uma vez por livro.
 
-A view utiliza SQL SECURITY INVOKER. A consulta é executada com as permissões do usuário conectado.
+A view utiliza SQL SECURITY INVOKER.
 
 ## Evolução do schema
 
@@ -110,5 +108,3 @@ Para conferir o estado:
 ```bash
 php bin/console doctrine:migrations:status
 ```
-
-O histórico inclui inicialmente a criação de autor em minúsculas e uma migration posterior de renomeação para Autor. Em uma instalação nova, o histórico completo deve ser executado.

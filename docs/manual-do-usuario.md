@@ -4,16 +4,52 @@
 
 O Book Project permite organizar livros, autores e assuntos e gerar um relatório PDF com os livros agrupados por autor.
 
-A página inicial apresenta os recursos de documentação e os atalhos para as áreas do sistema.
+## Navegação
 
-Nas páginas internas, o menu superior permite acessar Livros, Autores, Assuntos e Relatório PDF. A logo leva à página inicial.
+### Página inicial
+
+Na página inicial você encontrará dois botões:
+
+- **Documentações:** abre a página com os materiais de apoio do projeto.
+- **Acessar o sistema:** abre a página com todo os recursos de gerenciamento.
+
+### Documentações
+
+Esta página apresenta uma tabela com os seguintes materiais:
+
+- Checklist do projeto.
+- Documentação técnica.
+- Repositório no GitHub.
+- Manual do usuário.
+
+Clique em **Acessar**, na linha do documento desejado e o material será aberto em outra aba do navegador.
+
+### Recursos do sistema
+
+Ao clicar em **Acessar o sistema**, serão apresentados quatro atalhos:
+
+| Atalho | Finalidade |
+|---|---|
+| Livros | Cadastrar, consultar, editar e excluir livros |
+| Autores | Cadastrar, consultar, editar e excluir autores |
+| Assuntos | Cadastrar, consultar, editar e excluir assuntos |
+| Relatório por autor | Gerar o relatório PDF de livros agrupados por autor |
+
+Clique no card correspondente para acessar o recurso.
+
+### Retornar e alternar entre páginas
+
+Nas páginas de navegação e nas telas de cadastro, clique na logo Book Project para retornar à página inicial.
+
+Nas telas internas, o menu superior permite alternar diretamente entre Livros, Autores, Assuntos e Relatório PDF.
 
 ## Ordem sugerida de utilização
 
-1. Cadastre os autores.
-2. Cadastre os assuntos.
-3. Cadastre os livros e selecione suas associações.
-4. Emita o relatório PDF.
+1. Na página inicial, clique em **Acessar o sistema**.
+2. Acesse **Autores** e cadastre os autores.
+3. Acesse **Assuntos** e cadastre os assuntos.
+4. Acesse **Livros**, preencha os dados e selecione as associações.
+5. Acesse **Relatório por autor** para visualizar o PDF.
 
 ## Autores
 
@@ -21,7 +57,7 @@ Nas páginas internas, o menu superior permite acessar Livros, Autores, Assuntos
 
 1. Acesse Autores.
 2. Clique em Novo autor.
-3. Informe o nome, com até 40 caracteres.
+3. Informe o nome do autor, com até 40 caracteres.
 4. Clique em Salvar.
 
 ### Editar
@@ -96,7 +132,9 @@ A exclusão remove o livro e suas associações. Os cadastros dos autores e assu
 
 ## Relatório PDF
 
-Acesse Relatório PDF no menu superior ou o atalho da página inicial.
+Na página inicial, clique em **Acessar o sistema** e depois em **Relatório por autor**.
+
+O relatório também pode ser aberto pelo botão **Relatório PDF** do menu superior das telas internas.
 
 O sistema gera um documento com os livros agrupados por autor. O relatório apresenta título, editora, edição, ano de publicação, valor e assuntos.
 

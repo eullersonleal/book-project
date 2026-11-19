@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}Book Project{% endblock %}</title>
+
+        <link
+            rel="icon"
+            href="{{ asset('images/logo.png') }}"
+            type="image/png"
+        >
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+            <script
+                src="{{ asset('js/bootstrap.bundle.min.js') }}"
+                defer
+            ></script>
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

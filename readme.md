@@ -183,10 +183,13 @@ A suíte possui testes de validação das entidades, manipulação das associaç
 | Página | Endereço |
 |---|---|
 | Início | / |
+| Documentações | /documentacoes |
+| Recursos do sistema | /sistema |
 | Livros | /livros |
 | Autores | /autores |
 | Assuntos | /assuntos |
 | Relatório PDF | /relatorios/livros |
+
 
 ## Apresentação e implantação
 

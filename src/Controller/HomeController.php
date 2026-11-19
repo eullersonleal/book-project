@@ -15,4 +15,16 @@ class HomeController extends AbstractController
     {
         return $this->render('index.html.twig');
     }
+
+    #[Route('/documentacoes', name: 'documentacoes_index', methods: ['GET'])]
+    public function documentacoes(): Response
+    {
+        return $this->render('documents.html.twig');
+    }
+
+    #[Route('/sistema', name: 'sistema_index', methods: ['GET'])]
+    public function sistema(): Response
+    {
+        return $this->render('sistema.html.twig');
+    }
 }
