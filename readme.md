@@ -231,7 +231,7 @@ A aplicação ainda não possui uma hospedagem publicada documentada.
 
 ## Documentação
 
-- [Documentação técnica](docs/documentacao-tecnica.md)
+- [Documentação técnica](docs/documentacao_tecnica.md)
 - [Modelo de dados](docs/modelo-de-dados.md)
 - [Checklist do desafio](docs/checklist.md)
 - [Manual do usuário](docs/manual-do-usuario.md)
