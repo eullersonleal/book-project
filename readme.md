@@ -58,8 +58,6 @@ composer check-platform-reqs
 
 ### 1. Obter o projeto
 
-Substitua URL_DO_REPOSITORIO pelo endereço real:
-
 ```bash
 git clone https://github.com/eullersonleal/book-project.git books
 cd books

@@ -5,18 +5,10 @@
   },
   "name": "books",
   "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
+  "description": "Estilos e componentes da interface do Book Project",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "sass:compile": "sass --load-path=node_modules .sass/global.scss public/css/style.min.css --style=compressed --no-source-map --quiet-deps",
     "sass:watch": "npm run sass:compile -- --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "private": true
 }
