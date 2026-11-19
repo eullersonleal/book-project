@@ -38,32 +38,32 @@ Esses itens registram verificações realizadas durante o desenvolvimento. Devem
 
 ## Validação funcional final
 
-Marcar somente após conferir na versão que será entregue.
+Validação funcional confirmada pelo responsável pelo projeto em 18/11/2026.
 
-- [ ] Cadastrar, editar e excluir um autor sem vínculos.
-- [ ] Cadastrar, editar e excluir um assunto sem vínculos.
-- [ ] Cadastrar e editar um livro com todos os campos.
-- [ ] Associar dois autores e dois assuntos ao mesmo livro.
-- [ ] Remover uma associação durante a edição.
-- [ ] Conferir a formatação de valor na tela e no PDF.
-- [ ] Verificar mensagens de validação dos campos.
-- [ ] Confirmar o impedimento de excluir autor e assunto vinculados.
-- [ ] Excluir um livro e conferir a preservação dos autores e assuntos.
-- [ ] Conferir o relatório com múltiplos autores e assuntos.
-- [ ] Conferir o relatório com a base sem livros.
-- [ ] Conferir as páginas em largura de celular.
-- [ ] Conferir página inexistente com debug desativado.
-- [ ] Conferir os cenários de indisponibilidade sem expor detalhes técnicos.
+- [x] Cadastrar, editar e excluir um autor sem vínculos.
+- [x] Cadastrar, editar e excluir um assunto sem vínculos.
+- [x] Cadastrar e editar um livro com todos os campos.
+- [x] Associar dois autores e dois assuntos ao mesmo livro.
+- [x] Remover uma associação durante a edição.
+- [x] Conferir a formatação de valor na tela e no PDF.
+- [x] Verificar mensagens de validação dos campos.
+- [x] Confirmar o impedimento de excluir autor e assunto vinculados.
+- [x] Excluir um livro e conferir a preservação dos autores e assuntos.
+- [x] Conferir o relatório com múltiplos autores e assuntos.
+- [x] Conferir o relatório com a base sem livros.
+- [x] Conferir as páginas em largura de celular.
+- [x] Conferir página inexistente com debug desativado.
+- [x] Conferir os cenários de indisponibilidade sem expor detalhes técnicos.
 
 ## Preparação da entrega
 
-- [ ] Salvar e revisar README e demais documentos.
+- [x] Salvar e revisar README e demais documentos.
 - [ ] Reproduzir a instalação em uma base vazia.
-- [ ] Confirmar que as migrations também criam a view.
-- [ ] Criar o repositório no GitHub.
-- [ ] Enviar os commits.
-- [ ] Conferir o acesso ao repositório pelo avaliador.
-- [ ] Substituir os links provisórios da Home.
-- [ ] Confirmar que credenciais e arquivos locais não foram publicados.
-- [ ] Preparar o ambiente para demonstração desde o início da entrevista.
+- [x] Confirmar que as migrations também criam a view.
+- [x] Criar o repositório no GitHub.
+- [x] Enviar os commits.
+- [x] Confirmar que o repositório está publicamente acessível.
+- [x] Substituir os links provisórios da Home.
+- [x] Confirmar que credenciais e arquivos locais não foram publicados.
+- [x] Preparar o ambiente para demonstração desde o início da entrevista.
 - [ ] Enviar o endereço do repositório conforme as orientações recebidas.
