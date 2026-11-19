@@ -1,13 +1,18 @@
-{% extends 'index.html.twig' %}
+{% extends 'layouts/interno.html.twig' %}
 
 {% block title %}Autores{% endblock %}
 
-{% block body %}
-    <h1>Autores</h1>
-    
-    <p>
-        <a href="{{ path('autores_novo') }}">Novo autor</a>
-    </p>
+{% block conteudo %}
+    <div class="d-flex flex-column flex-md-row
+            justify-content-between
+            align-items-start align-items-md-center
+            gap-3 mb-4">
+        <h1 class="mb-0">Autores</h1>
+
+        <a href="{{ path('autores_novo') }}" class="btn btn-primary">
+            Novo autor
+        </a>
+    </div>
 
     {% for message in app.flashes('success') %}
         <p role="status">{{ message }}</p>
@@ -17,44 +22,61 @@
         <p role="alert">{{ message }}</p>
     {% endfor %}
 
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for autor in autores %}
+    <div class="table-responsive">
+        <table class="table table-hover align-middle w-100">
+            <thead class="table-light">
                 <tr>
-                    <td>{{ autor.id }}</td>
-                    <td>{{ autor.nome }}</td>
-                    <td>
-                        <a href="{{ path('autores_editar', {id: autor.id}) }}">
-                            Editar
-                        </a>
-
-                        <form
-                            method="post"
-                            action="{{ path('autores_excluir', {id: autor.id}) }}"
-                        >
-                            <input
-                                type="hidden"
-                                name="_token"
-                                value="{{ csrf_token('excluir_autor_' ~ autor.id) }}"
-                            >
-
-                            <button type="submit">Excluir</button>
-                        </form>
-                    </td>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col" class="text-end">Ações</th>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="3">Nenhum autor cadastrado.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <th scope="row">{{ autor.id }}</th>
+                        <td>{{ autor.nome }}</td>
+
+                        <td>
+                            <div class="d-flex justify-content-end gap-2">
+                                <a
+                                    href="{{ path('autores_editar', {id: autor.id}) }}"
+                                    class="btn btn-outline-primary btn-sm"
+                                >
+                                    Editar
+                                </a>
+
+                                <form
+                                    method="post"
+                                    action="{{ path('autores_excluir', {id: autor.id}) }}"
+                                    class="m-0"
+                                >
+                                    <input
+                                        type="hidden"
+                                        name="_token"
+                                        value="{{ csrf_token('excluir_autor_' ~ autor.id) }}"
+                                    >
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-outline-danger btn-sm"
+                                    >
+                                        Excluir
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3"
+                            class="text-center text-body-secondary py-4">
+                            Nenhum autor cadastrado.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

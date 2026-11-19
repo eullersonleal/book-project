@@ -12,6 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\DBAL\Exception\DeadlockException;
+use Doctrine\DBAL\Exception\LockWaitTimeoutException;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 
 final class LivroController extends AbstractController
 {
@@ -31,11 +34,25 @@ final class LivroController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $livroRepository->save($livro, true);
+            try {
+                $livroRepository->save($livro, true);
+            } catch (
+                DeadlockException | LockWaitTimeoutException $exception
+            ) {
+                throw new ServiceUnavailableHttpException(
+                    null,
+                    'Não foi possível concluir a operação devido a um bloqueio no banco.',
+                    $exception,
+                );
+            }
 
             $this->addFlash('success', 'Livro cadastrado com sucesso.');
 
-            return $this->redirectToRoute('livros_index');
+            return $this->redirectToRoute(
+                'livros_index',
+                [],
+                Response::HTTP_SEE_OTHER,
+            );
         }
 
         return $this->render('livros/form.html.twig', [
@@ -57,7 +74,15 @@ final class LivroController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $livroRepository->save($livro, true);
+            try {
+                $livroRepository->save($livro, true);
+            } catch (DeadlockException | LockWaitTimeoutException $exception) {
+                throw new ServiceUnavailableHttpException(
+                    null,
+                    'Não foi possível atualizar o livro devido a um bloqueio no banco.',
+                    $exception,
+                );
+            }
 
             $this->addFlash('success', 'Livro atualizado com sucesso.');
 
@@ -91,7 +116,15 @@ final class LivroController extends AbstractController
             throw $this->createNotFoundException('Livro não encontrado.');
         }
 
-        $livroRepository->remove($livro, true);
+        try {
+            $livroRepository->remove($livro, true);
+        } catch (DeadlockException | LockWaitTimeoutException $exception) {
+            throw new ServiceUnavailableHttpException(
+                null,
+                'Não foi possível excluir o livro devido a um bloqueio no banco.',
+                $exception,
+            );
+        }
 
         $this->addFlash('success', 'Livro excluído com sucesso.');
 

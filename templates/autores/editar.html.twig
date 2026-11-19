@@ -1,18 +1,4 @@
-{% extends 'index.html.twig' %}
+{% extends 'layouts/formulario.html.twig' %}
 
-{% block title %}Editar autor{% endblock %}
-
-{% block body %}
-    <h1>Editar autor</h1>
-
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
-        {{ form_row(form.nome) }}
-
-        <button type="submit">Salvar alterações</button>
-    {{ form_end(form) }}
-
-    <p>
-        <a href="{{ path('autores_index') }}">Voltar para autores</a>
-    </p>
-{% endblock %}
+{% set titulo_formulario = 'Editar autor' %}
+{% set rota_voltar = 'autores_index' %}

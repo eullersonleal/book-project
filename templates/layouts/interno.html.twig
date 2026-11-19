@@ -1,0 +1,53 @@
+{% extends 'index.html.twig' %}
+
+{% block body %}
+    <div class="min-vh-100 d-flex flex-column">
+        <header class="border-bottom">
+            <div class="container py-3 d-flex flex-column flex-md-row
+                        align-items-center justify-content-between gap-3">
+
+                <a href="{{ path('home') }}"
+                   class="d-flex align-items-center gap-2
+                          text-decoration-none text-body">
+                    <img
+                        src="{{ asset('images/logo.png') }}"
+                        alt=""
+                        width="40"
+                    >
+                    <span class="fs-5 fw-semibold">Book Project</span>
+                </a>
+
+                <nav aria-label="Navegação principal"
+                     class="d-flex flex-wrap justify-content-center gap-2">
+                    <a href="{{ path('livros_index') }}"
+                       class="btn btn-outline-primary btn-sm">
+                        Livros
+                    </a>
+
+                    <a href="{{ path('autores_index') }}"
+                       class="btn btn-outline-primary btn-sm">
+                        Autores
+                    </a>
+
+                    <a href="{{ path('assuntos_index') }}"
+                       class="btn btn-outline-primary btn-sm">
+                        Assuntos
+                    </a>
+
+                    <a href="{{ path('relatorios_livros') }}"
+                       class="btn btn-outline-primary btn-sm">
+                        Relatório PDF
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="container flex-grow-1 py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    {% block conteudo %}{% endblock %}
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

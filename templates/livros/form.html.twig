@@ -1,25 +1,4 @@
-{% extends 'index.html.twig' %}
+{% extends 'layouts/formulario.html.twig' %}
 
-{% block title %}{{ tituloPagina }}{% endblock %}
-
-{% block body %}
-    <h1>{{ tituloPagina }}</h1>
-
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
-
-        {{ form_row(form.titulo) }}
-        {{ form_row(form.editora) }}
-        {{ form_row(form.edicao) }}
-        {{ form_row(form.anoPublicacao) }}
-        {{ form_row(form.valor) }}
-        {{ form_row(form.autores) }}
-        {{ form_row(form.assuntos) }}
-
-        <button type="submit">Salvar</button>
-    {{ form_end(form) }}
-
-    <p>
-        <a href="{{ path('livros_index') }}">Voltar para livros</a>
-    </p>
-{% endblock %}
+{% set titulo_formulario = tituloPagina %}
+{% set rota_voltar = 'livros_index' %}

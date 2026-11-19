@@ -1,0 +1,39 @@
+{% set paginas = {
+    403: {
+        titulo: 'Acesso não permitido',
+        mensagem: 'Você não tem permissão para realizar esta ação.'
+    },
+    404: {
+        titulo: 'Página não encontrada',
+        mensagem: 'O endereço acessado não existe ou o registro não foi encontrado.'
+    },
+    500: {
+        titulo: 'Não foi possível concluir a solicitação',
+        mensagem: 'Ocorreu um erro inesperado. Tente novamente mais tarde.'
+    },
+    503: {
+        titulo: 'Serviço temporariamente indisponível',
+        mensagem: 'Não foi possível acessar um serviço necessário. Tente novamente em alguns instantes.'
+    }
+} %}
+{% set pagina = paginas[status_code] ?? paginas[500] %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>{{ status_code }} | Book Project</title>
+    <link rel="stylesheet" href="/css/style.min.css">
+</head>
+<body>
+    <main class="container min-vh-100 d-flex flex-column
+                 align-items-center justify-content-center text-center py-5">
+        <img src="/images/logo.png" alt="Book Project" width="80" class="mb-4">
+        <p class="display-3 fw-bold text-primary mb-3">{{ status_code }}</p>
+        <h1 class="h2 mb-3">{{ pagina.titulo }}</h1>
+        <p class="text-body-secondary mb-4">{{ pagina.mensagem }}</p>
+        <a href="/" class="btn btn-primary">Voltar ao início</a>
+    </main>
+</body>
+</html>

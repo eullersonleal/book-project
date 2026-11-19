@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th scope="col" class="text-start">{{ tituloHeader1 }}</th>
+                <th scope="col" class="text-end text-nowrap">
+                    {{ tituloHeader2 }}
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in tabela %}
+            <tr>
+                <th scope="row" class="text-start">
+                    {{ row.titulo }}
+                </th>
+                <td class="text-end">
+                    <a href="{{ row.url }}"
+                    class="btn btn-primary btn-sm"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                        Acessar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

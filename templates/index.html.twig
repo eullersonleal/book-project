@@ -4,10 +4,16 @@
         <meta charset="UTF-8">
         <title>{% block title %}Book project!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        
         {% block stylesheets %}
+            <link rel="stylesheet" href="/css/style.min.css">
         {% endblock %}
 
         {% block javascripts %}
+            <script
+                src="{{ asset('js/bootstrap.bundle.min.js') }}"
+                defer
+            ></script>
         {% endblock %}
 
         {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
@@ -16,8 +22,90 @@
         <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        {% block body %} Hello World!{% endblock %}
+        {% block body %}
+            <main class="container min-vh-100 d-flex flex-column justify-content-center align-items-center text-center gap-3 py-5">
+                <img
+                    src="{{ asset('images/logo.png') }}"
+                    alt="Logo Book Project"
+                    width="160"
+                    class="img-fluid"
+                >
+
+                <h1 class="mb-0">Book Project</h1>
+
+                <p class="text-body-secondary mb-0">
+                    Gerencie livros, autores e assuntos.
+                </p>
+
+                <section class="col-12 col-md-10 col-lg-8 mt-4">
+                    <h2 class="h4 mb-3">Documentação e recursos</h2>
+
+                    {% set repositorio = 'https://github.com/eullersonleal/book-project' %}
+
+                    {% set acessos = [
+                        {
+                            titulo: 'Checklist do projeto',
+                            url: repositorio ~ '/blob/main/docs/checklist.md'
+                        },
+                        {
+                            titulo: 'Documentação técnica do projeto',
+                            url: repositorio ~ '/blob/main/docs/documentacao_tecnica.md'
+                        },
+                        {
+                            titulo: 'Repositório no GitHub',
+                            url: repositorio
+                        },
+                        {
+                            titulo: 'Manual do usuário',
+                            url: repositorio ~ '/blob/main/docs/manual-do-usuario.md'
+                        }
+                    ] %}
+
+                    {% include 'components/tabela.html.twig' with {
+                        tituloHeader1: 'Documentos',
+                        tituloHeader2: 'Links',
+                        tabela: acessos
+                    } %}
+                </section>
+
+                <section class="col-12 col-md-10 col-lg-8 mt-4">
+                <div class="row g-3">
+                    {% set atalhos = [
+                        {
+                            titulo: 'Livros',
+                            rota: 'livros_index'
+                        },
+                        {
+                            titulo: 'Autores',
+                            rota: 'autores_index'
+                        },
+                        {
+                            titulo: 'Assuntos',
+                            rota: 'assuntos_index'
+                        },
+                        {
+                            titulo: 'Relatório por autor',
+                            rota: 'relatorios_livros'
+                        }
+                    ] %}
+
+                    <div class="row g-3">
+                        {% for atalho in atalhos %}
+                            <div class="col-12 col-md-6 d-flex">
+                                {% include 'components/card_acesso.html.twig' with {
+                                    titulo: atalho.titulo,
+                                    url: path(atalho.rota)
+                                } only %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            </main>
+        {% endblock %}
     </body>
 </html>

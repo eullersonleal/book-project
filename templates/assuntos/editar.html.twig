@@ -1,18 +1,4 @@
-{% extends 'index.html.twig' %}
+{% extends 'layouts/formulario.html.twig' %}
 
-{% block title %}Editar assunto{% endblock %}
-
-{% block body %}
-    <h1>Editar assunto</h1>
-
-    {{ form_start(form) }}
-        {{ form_errors(form) }}
-        {{ form_row(form.descricao) }}
-
-        <button type="submit">Salvar alterações</button>
-    {{ form_end(form) }}
-
-    <p>
-        <a href="{{ path('assuntos_index') }}">Voltar para assuntos</a>
-    </p>
-{% endblock %}
+{% set titulo_formulario = 'Editar assunto' %}
+{% set rota_voltar = 'assuntos_index' %}
